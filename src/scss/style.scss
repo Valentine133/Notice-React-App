@@ -1,0 +1,17 @@
+.container {
+  max-width: 900px;
+}
+
+.list-group {
+  &-item {
+    cursor: pointer;
+    min-height: 42px;
+
+    > span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+  }
+}

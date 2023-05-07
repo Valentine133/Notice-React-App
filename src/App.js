@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Sidebar from "./components/Sidebar";
+import Workspace from "./components/Workspace";
+import Search from "./components/Search";
+
+import { Container, Card, Row, Col } from "react-bootstrap";
+
+const AppContext = React.createContext();
 
 function App() {
+  const [notes, setNotes] = useState([]);
+  const [selectedNote, setSelectedNote] = useState(null);
+  const [search, setSearch] = useState("");
+
+  const contextValue = {
+   
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppContext.Provider value={contextValue}>
+        <Container className="py-5 container-min">
+          <Card>
+              <Card.Header className="d-flex justify-content-between">
+                <Search/>
+              </Card.Header>
+              <Card.Body>
+                <Row>
+                  <Col sm={4}>
+                    <Sidebar/>
+                  </Col>
+                  <Col sm={8}>
+                    <Workspace/>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+        </Container>
+      </AppContext.Provider>
     </div>
   );
 }
