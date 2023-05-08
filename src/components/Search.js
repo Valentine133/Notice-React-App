@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { AppContext } from '../App';
+
+import { Row, Col, Button } from 'react-bootstrap';
 
 const Search = () => {
-  return (
-    <div>Search</div>
-  )
-};
+  const { handleNoteAdd } = useContext(AppContext);
 
-export default Search;
+  return (
+    <Row className="d-flex justify-content-between">
+      <Col>
+        <Button onClick={handleNoteAdd}>Add</Button>
+      </Col>
+      <Col>
+        <div>Search</div>
+      </Col>
+    </Row>
+  )
+}
+
+export default Search

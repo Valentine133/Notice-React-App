@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { AppContext } from '../App';
+import ListItem from './ListItem';
 
-const Sidebar = () => {
+import { ListGroup } from 'react-bootstrap';
+
+const Sidebar = ({notes}) => {
+  const { handleNoteSelect } = useContext(AppContext);
+
+  console.log(notes);
+
   return (
-    <div>Sidebar</div>
-  )
+    <>
+      <ListGroup className="mb-3">
+        {notes.map((note) => (
+          <ListItem
+            key={note.id}
+            note={note}
+            handleNoteSelect={handleNoteSelect}
+          />
+        ))}
+      </ListGroup>
+    </>
+  );
 };
 
 export default Sidebar;
