@@ -1,21 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import { AppContext } from '../App';
+import debounce from 'lodash.debounce';
 
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button, Form } from 'react-bootstrap';
 
 const Search = () => {
-  const { handleNoteAdd } = useContext(AppContext);
+  const { handleNoteAdd, handleNoteSearch, searchTerm, setSearchTerm } = useContext(AppContext);
+
+  const updateSearchValue = useCallback(
+    debounce((searchTerm) => {
+      handleNoteSearch(searchTerm);
+    }, 800),[]
+  )
+
+  const handleSearchTermChange = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    updateSearchValue(value);
+  };
 
   return (
     <Row className="d-flex justify-content-between">
-      <Col>
+      <Col className='col-auto'>
         <Button onClick={handleNoteAdd}>Add</Button>
       </Col>
-      <Col>
-        <div>Search</div>
+      <Col className='col-auto'>
+        <Form.Control type="search" value={searchTerm} onChange={handleSearchTermChange} placeholder="Search by notes" />
       </Col>
     </Row>
   )
 }
 
-export default Search
+export default Search;

@@ -44,10 +44,21 @@ export const useIndexedDB = () => {
     await tx.complete;
   };
 
+  const searchNotes = async (searchTerm) => {
+    const db = await openDBPromise;
+    const tx = db.transaction(storeName, 'readonly');
+    const store = tx.objectStore(storeName);
+    const notes = await store.getAll();
+    return notes.filter((note) =>
+      note.content.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  };
+
   return {
     getAllNotes,
     addNote,
     updateNote,
     deleteNote,
+    searchNotes,
   };
 };

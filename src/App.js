@@ -11,8 +11,9 @@ export const AppContext = React.createContext();
 const App = () => {
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const { getAllNotes, addNote, updateNote, deleteNote } = useIndexedDB();
+  const { getAllNotes, addNote, updateNote, deleteNote, searchNotes } = useIndexedDB();
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -59,6 +60,11 @@ const App = () => {
     setSelectedNote(updatedNote);
   };
 
+  const handleNoteSearch = async (searchTerm) => {
+    const notes = await searchNotes(searchTerm);
+    setNotes(notes);
+  };
+
   const contextValue = {
    notes, 
    selectedNote,
@@ -66,23 +72,26 @@ const App = () => {
    handleNoteAdd,
    handleNoteDelete,
    handleNoteEdit,
-   setSelectedNote
+   setSelectedNote,
+   handleNoteSearch,
+   searchTerm, 
+   setSearchTerm
   };
 
   return (
     <div className="app">
       <AppContext.Provider value={contextValue}>
-        <Container className="py-5 container-min">
+        <Container className="py-3 py-sm-5 container-min">
           <Card>
               <Card.Header>
                 <Search/>
               </Card.Header>
-              <Card.Body>
-                <Row>
-                  <Col sm={4}>
+              <Card.Body className='py-0'>
+                <Row className='h-100'>
+                  <Col sm={4} className='sidebar mb-4 mb-sm-0 py-3'>
                     <Sidebar notes={notes}/>
                   </Col>
-                  <Col sm={8}>
+                  <Col sm={8} className='workspace-wrapp py-3'>
                     <Workspace/>
                   </Col>
                 </Row>

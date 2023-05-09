@@ -1,5 +1,13 @@
+@import './custom';
+
 .container {
-  max-width: 900px;
+  @media (min-width: 1400px) {
+    max-width: 960px;
+  }
+}
+
+.card {
+  min-height: 80vh;
 }
 
 .list-group {
@@ -9,5 +17,14 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+
+.sidebar {
+  max-height: 50vh;
+  overflow-y: auto;
+
+  @media (min-width: 576px) {
+    max-height: 70vh;
   }
 }

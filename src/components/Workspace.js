@@ -10,7 +10,6 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 const Workspace = () => {
 const { selectedNote, handleNoteDelete, handleNoteEdit } = useContext(AppContext);
 const [editing, setEditing] = useState(false);
-// const [dateEdit, setDateEdit] = useState('');
 const [contentEdit, setContentEdit] = useState('');
 const [date, setDate] = useState('');
 const [content, setContent] = useState('');
@@ -28,7 +27,6 @@ const handleEditClick = () => {
 
 const handleCancelClick = () => {
   setEditing(false);
-  // setDateEdit('');
   setContentEdit('');
 };
 
@@ -39,10 +37,6 @@ const handleSaveClick = () => {
   setEditing(false);
   handleNoteEdit(contentEdit, newDate);
 };
-
-// const handleTextChange = (event) => {
-//   setTitleEdit(event.target.value);
-// };
 
 const handleContentChange = (event) => {
   setContentEdit(event.target.value);
@@ -61,7 +55,7 @@ return (
 
       <Row className="justify-content-between mb-3">
         <Col className="col-auto">
-          <h5 className="text-secondary mb-3">{date}</h5>
+          <h5 className="opacity-75 mb-3">{date}</h5>
         </Col>
         <Col className="col-auto">
           
@@ -84,7 +78,7 @@ return (
         {editing ? (
         <Form.Control 
           as="textarea" 
-          rows={20} 
+          rows={18} 
           defaultValue={content} 
           placeholder="Your text" 
           onChange={handleContentChange}

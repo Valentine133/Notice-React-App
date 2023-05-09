@@ -1,0 +1,33 @@
+$theme-colors: (
+  primary: #40B664,
+  secondary: #945414,
+  success: #1e6111,
+  info:  #64c3d2,
+  warning: #f5e74a,
+  danger: #9e2a2b
+);
+
+// GLOBAL 
+$body-bg: #277da1;
+$btn-border-radius: 1rem;
+
+// CARD 
+$card-bg: #0f4c5c;
+$card-color: #ffffff;
+$border-color-translucent: rgba(33, 157, 188, 0.3);
+$card-border-radius: 1.25rem;
+
+// ListGroup 
+$list-group-active-bg: #368f8b;
+$list-group-bg: #246a73;
+$list-group-color: #ffffff;
+
+// FormControl 
+$input-border-radius: 1rem;
+$input-bg: #669bbc;
+$input-color: #ffffff;
+$input-placeholder-color: #ffffffbf;
+$input-border-color: #003566;
+$input-focus-border-color: #fb8500;
+
+@import '~bootstrap/scss/bootstrap.scss';

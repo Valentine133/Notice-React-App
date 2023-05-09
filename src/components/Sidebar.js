@@ -7,8 +7,6 @@ import { ListGroup } from 'react-bootstrap';
 const Sidebar = ({notes}) => {
   const { handleNoteSelect } = useContext(AppContext);
 
-  console.log(notes);
-
   return (
     <>
       <ListGroup className="mb-3">

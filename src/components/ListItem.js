@@ -5,17 +5,17 @@ import { ListGroup} from 'react-bootstrap';
 
 const ListItem = ({ note, handleNoteSelect }) => {
   const { content, date } = note;
-
-  // const { setSelectedNote } = useContext(AppContext);
+  const { selectedNote } = useContext(AppContext);
+  const activeClass = selectedNote ? selectedNote.id : null;
 
   return (
     <ListGroup.Item 
       key={note.id}
-      className={note.id === handleNoteSelect ? 'active' : ''}
+      className={note.id === activeClass ? 'active' : ''}
       onClick={() => handleNoteSelect(note)}>
         {content}
         <br/>
-        <span className='small text-secondary'>{date}</span>
+        <span className='small fw-bold opacity-50'>{date}</span>
     </ListGroup.Item>
   );
 };
