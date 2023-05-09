@@ -1,6 +1,7 @@
 {
   "name": "notice-react-app",
   "version": "0.1.0",
+  "homepage": "https://valentine133.github.io/Notice-React-App/",
   "private": true,
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
