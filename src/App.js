@@ -29,8 +29,8 @@ const App = () => {
   const handleNoteAdd = async () => {
     const newNote = {
       id: Date.now(),
-      title: `New Note ${Date.now()}`,
       content: '',
+      date: `${new Date().toLocaleString()}`,
     };
     await addNote(newNote);
     setNotes([...notes, newNote]);
@@ -46,11 +46,11 @@ const App = () => {
     }
   };
 
-  const handleNoteEdit = async (title, content) => {
+  const handleNoteEdit = async (content, date) => {
     const updatedNote = {
       ...selectedNote,
-      title,
       content,
+      date,
     };
     await updateNote(updatedNote);
     setNotes(

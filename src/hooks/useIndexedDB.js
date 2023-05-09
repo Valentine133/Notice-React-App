@@ -48,6 +48,6 @@ export const useIndexedDB = () => {
     getAllNotes,
     addNote,
     updateNote,
-    deleteNote
+    deleteNote,
   };
 };

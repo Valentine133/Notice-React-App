@@ -4,7 +4,7 @@ import { AppContext } from '../App';
 import { ListGroup} from 'react-bootstrap';
 
 const ListItem = ({ note, handleNoteSelect }) => {
-  const { title } = note;
+  const { content, date } = note;
 
   // const { setSelectedNote } = useContext(AppContext);
 
@@ -13,7 +13,9 @@ const ListItem = ({ note, handleNoteSelect }) => {
       key={note.id}
       className={note.id === handleNoteSelect ? 'active' : ''}
       onClick={() => handleNoteSelect(note)}>
-        {title}
+        {content}
+        <br/>
+        <span className='small text-secondary'>{date}</span>
     </ListGroup.Item>
   );
 };

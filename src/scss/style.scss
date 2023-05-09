@@ -6,12 +6,8 @@
   &-item {
     cursor: pointer;
     min-height: 42px;
-
-    > span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
